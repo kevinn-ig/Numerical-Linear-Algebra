@@ -1,6 +1,9 @@
 import random
 import matplotlib.pyplot as plt
 import time
+import numpy as np
+# Add so it calculates everything for complete, partial, and no pivoting
+
 
 def generate_full_rank_matrix(n):
     L = [[0.0] * n for _ in range(n)]
@@ -54,7 +57,7 @@ def matrix_multiplication(L, U, product_type):
     return result
 
 # LU factorization with pivoting
-def lu_factorization(A, pivoting):
+#def lu_factorization(A, pivoting):
     n = len(A)
     L = [[0.0] * n for _ in range(n)]
     U = [[0.0] * n for _ in range(n)]
@@ -87,89 +90,190 @@ def lu_factorization(A, pivoting):
     return P, L, U
 
 
-
-def matrix_norm(W, norm_type):
-    n = len(W)
-    if norm_type == '1':
-        return max(sum(abs(W[j][i]) for j in range(n)) for i in range(n))
-    elif norm_type == 'inf':
-        return max(sum(abs(W[i][j]) for j in range(n)) for i in range(n))
-    elif norm_type == 'F':
-        return sum(sum(W[i][j] ** 2 for j in range(n)) for i in range(n)) ** 0.5
-    else:
-        raise ValueError("Invalid norm type. Choose from '1', 'inf', or 'F'")
-
 def factorization_accuracy(A, L, U, P):
-    PA = apply_permutation_matrix(P, A)
-    LU = matrix_multiplication(L, U, 'LU')
-    error = matrix_norm(subtract_matrices(PA, LU), 'F') / max(1, matrix_norm(A, 'F'))
+    PA = np.matmul(P, A)
+    LU = np.matmul(L, U)
+    error = np.linalg.norm(PA - LU, ord='fro') / max(1, np.linalg.norm(A, ord='fro'))
     return error
 
 def growth_factor(L, U, A):
-    LU_norm = matrix_norm(matrix_multiplication(L, U, 'LU'), 'F')
-    A_norm = matrix_norm(A, 'F')
+    LU_norm = np.linalg.norm(np.matmul(L, U), ord='fro')
+    A_norm = np.linalg.norm(A, ord='fro')
     return LU_norm / max(1, A_norm)
 
+def lu_decomposition_no_pivot(A):
+    n = len(A)
+    P = list(range(n))
+    Q = list(range(n))
+    L = [[0.0] * n for _ in range(n)]
+    U = [row.copy() for row in A]
+
+    for k in range(n):
+        L[k][k] = 1.0
+        for i in range(k + 1, n):
+            L[i][k] = A[i][k] / A[k][k]
+            U[i][k] = 0.0
+            for j in range(k + 1, n):
+                U[i][j] -= L[i][k] * A[k][j]
+
+    return P, Q, L, U
+
+def lu_decomposition_partial_pivot(A):
+    n = len(A)
+    P = [i for i in range(n)]
+    Q = [i for i in range(n)]
+    L = [[0.0] * n for _ in range(n)]
+    U = [row.copy() for row in A]
+
+    for k in range(n):
+        pivot_row = max(range(k, n), key=lambda i: abs(U[i][k]))
+        if pivot_row != k:
+            A[k], A[pivot_row] = A[pivot_row], A[k]
+            P[k], P[pivot_row] = P[pivot_row], P[k]
+        L[k][k] = 1.0
+        for i in range(k + 1, n):
+            L[i][k] = U[i][k] / U[k][k]
+            U[i][k] = 0.0
+            for j in range(k + 1, n):
+                U[i][j] -= L[i][k] * U[k][j]
+        for i in range(k + 1, n):
+            U[i][k] = 0
+
+    return P, Q, L, U
+
+def lu_decomposition_complete_pivot(A):
+    n = len(A)
+    P = [i for i in range(n)]
+    Q = [i for i in range(n)]
+    L = [[0.0] * n for _ in range(n)]
+    U = [row.copy() for row in A]
+
+    for k in range(n):
+        max_val = 0
+        max_index = (0, 0)
+        for i in range(k, n):
+            for j in range(k, n):
+                if abs(U[i][j]) > max_val:
+                    max_val = abs(U[i][j])
+                    max_index = (i, j)
+        i, j = max_index
+        if i != k:
+            A[k], A[i] = A[i], A[k]
+            P[k], P[i] = P[i], P[k]
+        if j != k:
+            A = [list(row) for row in zip(*A)]  # Transpose A
+            A[k], A[j] = A[j], A[k]
+            A = [list(row) for row in zip(*A)]  # Transpose back
+            Q[k], Q[j] = Q[j], Q[k]
+        L[k][k] = 1.0
+        for i in range(k + 1, n):
+            L[i][k] = U[i][k] / U[k][k]
+            U[i][k] = 0.0
+            for j in range(k + 1, n):
+                U[i][j] -= L[i][k] * U[k][j]
+        for i in range(k + 1, n):
+            U[i][k] = 0
+
+    return P, Q, L, U
+
+
+def perform_lu_decomposition(A, pivot_type):
+    if pivot_type == "partial":
+        P, Q, L, U = lu_decomposition_partial_pivot(A)
+    elif pivot_type == "complete":
+        P, Q, L, U = lu_decomposition_complete_pivot(A)
+    elif pivot_type == "none":
+        P, Q, L, U = lu_decomposition_no_pivot(A)
+    else:
+        raise ValueError("Invalid pivot_type. Use 'partial', 'complete', or 'none'.")
+
+    return P, Q, L, U
+
 # Experiment parameters
-problem_sizes = [10, 50, 100, 300]#, 500]
+problem_sizes = [10, 20, 30]
 num_samples = 10
 results = []
+pivot_types = ["none", "partial", "complete"]
 
-for i in problem_sizes:
-    accuracies = []
-    growth_factors = []
-    execution_times = []
+for pivot_type in pivot_types:
+    for j in range(len(problem_sizes)):
+        accuracies = []
+        growth_factors = []
+        execution_times = []
 
-    for _ in range(num_samples):
-        A = generate_full_rank_matrix(i)
-        
-        start_time = time.time()
-        P, L, U = lu_factorization(A, pivoting='complete')
-        end_time = time.time()
+        for _ in range(num_samples):
+            A = generate_full_rank_matrix(problem_sizes[j])
+            numpy_A = np.array(A)
 
-        # Calculate factorization accuracy and growth factor
-        error = factorization_accuracy(A, L, U, P)
-        gamma = growth_factor(L, U, A)
+            start_time = time.time()
+            P, Q, L, U = perform_lu_decomposition(A, pivot_type)
+            end_time = time.time()
+            numpy_L = np.array(L)
+            numpy_U = np.array(U)
 
-        # Store results
-        accuracies.append(error)
-        growth_factors.append(gamma)
-        execution_times.append(end_time - start_time)
+            # Calculate factorization accuracy and growth factor
+            error = factorization_accuracy(A, L, U, P)
+            gamma = growth_factor(L, U, A)
 
-    # Calculate average metrics
-    avg_accuracy = sum(accuracies) / len(accuracies)
-    avg_growth_factor = sum(growth_factors) / len(growth_factors)
-    avg_execution_time = sum(execution_times) / len(execution_times)
+            # Store results
+            accuracies.append(error)
+            growth_factors.append(gamma)
+            execution_times.append(end_time - start_time)
 
-    results.append({
-        'n': i,
-        'avg_accuracy': avg_accuracy,
-        'avg_growth_factor': avg_growth_factor,
-        'avg_execution_time': avg_execution_time
-    
-    })
-    print(f"n = {i} done")
+        # Calculate average metrics
+        avg_accuracy = sum(accuracies) / len(accuracies)
+        avg_growth_factor = sum(growth_factors) / len(growth_factors)
+        avg_execution_time = sum(execution_times) / len(execution_times)
+
+        results.append({
+            'pivot_type': pivot_type,
+            'n': problem_sizes[j],
+            'avg_accuracy': avg_accuracy,
+            'avg_growth_factor': avg_growth_factor,
+            'avg_execution_time': avg_execution_time
+        })
+
+        print(f"Pivot type = {pivot_type}, n = {problem_sizes[j]} done")
 
 # Plot results
 plt.figure(figsize=(12, 6))
 
-plt.plot([r['n'] for r in results], [r['avg_accuracy'] for r in results], marker='o')
+for pivot_type in pivot_types:
+    pivot_results = [r for r in results if r['pivot_type'] == pivot_type]
+
+    plt.plot([r['n'] for r in pivot_results], [r['avg_accuracy'] for r in pivot_results], marker='o', label=pivot_type)
+
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Factorization Accuracy')
 plt.title('Factorization Accuracy vs. Problem Size')
+plt.legend()
 plt.savefig("acc_over_n.png")
 plt.close()
 
-plt.plot([r['n'] for r in results], [r['avg_growth_factor'] for r in results], marker='o')
+plt.figure(figsize=(12, 6))
+
+for pivot_type in pivot_types:
+    pivot_results = [r for r in results if r['pivot_type'] == pivot_type]
+
+    plt.plot([r['n'] for r in pivot_results], [r['avg_growth_factor'] for r in pivot_results], marker='o', label=pivot_type)
+
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Growth Factor')
 plt.title('Growth Factor vs. Problem Size')
+plt.legend()
 plt.savefig("grow_fac.png")
 plt.close()
 
-plt.plot([r['n'] for r in results], [r['avg_execution_time'] for r in results], marker='o')
+plt.figure(figsize=(12, 6))
+
+for pivot_type in pivot_types:
+    pivot_results = [r for r in results if r['pivot_type'] == pivot_type]
+
+    plt.plot([r['n'] for r in pivot_results], [r['avg_execution_time'] for r in pivot_results], marker='o', label=pivot_type)
+
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Execution Time (s)')
 plt.title('Execution Time vs. Problem Size')
+plt.legend()
 plt.savefig("ex_time.png")
 plt.close()
