@@ -111,7 +111,7 @@ def growth_factor(L, U, A):
     return LU_norm / max(1, A_norm)
 
 # Experiment parameters
-problem_sizes = [10, 50, 100, 300, 500]
+problem_sizes = [10, 50, 100, 300]#, 500]
 num_samples = 10
 results = []
 
@@ -152,23 +152,24 @@ for i in problem_sizes:
 
 # Plot results
 plt.figure(figsize=(12, 6))
-plt.subplot(1, 3, 1)
+
 plt.plot([r['n'] for r in results], [r['avg_accuracy'] for r in results], marker='o')
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Factorization Accuracy')
 plt.title('Factorization Accuracy vs. Problem Size')
+plt.savefig("acc_over_n.png")
+plt.close()
 
-plt.subplot(1, 3, 2)
 plt.plot([r['n'] for r in results], [r['avg_growth_factor'] for r in results], marker='o')
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Growth Factor')
 plt.title('Growth Factor vs. Problem Size')
+plt.savefig("grow_fac.png")
+plt.close()
 
-plt.subplot(1, 3, 3)
 plt.plot([r['n'] for r in results], [r['avg_execution_time'] for r in results], marker='o')
 plt.xlabel('Problem Size (n)')
 plt.ylabel('Average Execution Time (s)')
 plt.title('Execution Time vs. Problem Size')
-
-plt.tight_layout()
-plt.show()
+plt.savefig("ex_time.png")
+plt.close()
