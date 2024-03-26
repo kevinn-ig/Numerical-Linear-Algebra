@@ -43,7 +43,7 @@ def lu_decomposition_partial_pivot(A):
             U[i][k] = 0.0
             for j in range(k + 1, n):
                 U[i][j] -= L[i][k] * A[k][j]
-        U[k+1:, k] = 0  #
+
     return P, Q, L, U
 
 def lu_decomposition_complete_pivot(A):
@@ -85,6 +85,7 @@ def perform_lu_decomposition(A, pivot_type):
 n = 5
 pivot_types = ["none", "partial", "complete"]
 A = generate_diagonal_matrix(n)
+
 
 for i in range(len(pivot_types)):
     # Test the function

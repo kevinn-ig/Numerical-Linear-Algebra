@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 def householder_reflector(a):
     """Compute the Householder reflector for a vector a."""
@@ -42,7 +43,7 @@ def incremental_least_squares(A, b, x_prev=None):
 
 def create_laplacian_matrix(n):
     """Create the Laplacian matrix L for regularization."""
-    L = np.eye(n, n-1, -1) - np.eye(n, n-1)
+    L = -np.eye(n - 1, n) + np.eye(n - 1, n, k=1)
     return L
 
 def regularized_least_squares(A, b, L, lambda_reg):
@@ -71,11 +72,13 @@ def analyze_reconstruction(n_values, lambda_values, noise_variance=1.0):
             x_reg = regularized_least_squares(A, b, L, lambda_reg)
             plt.plot(t, x_reg, label=f'λ={lambda_reg}')
         plt.plot(t, x_true, label='True signal', color='black', linewidth=2)
-        plt.scatter(t, b, label='Observed signal', color='red')
         plt.title(f'Signal Reconstruction for n={n}')
         plt.xlabel('Time')
         plt.ylabel('Signal')
         plt.legend()
+        print(os.getcwd())
+        filename = os.path.join(os.getcwd(), f"signalplot_{n}.png")
+        plt.savefig(filename)  # Save the plot with the specified filename
         plt.show()
 
 def test_least_squares():
@@ -201,8 +204,8 @@ test_incremental_least_squares()
 # Example usage
 n = 10
 lambda_reg = 10
-L = create_laplacian_matrix(n)
-A = np.random.rand(n, n)
+L = create_laplacian_matrix(n)  # This should create a matrix of size (n-1) x n
+A = np.eye(n)  # Identity matrix of size n x n
 b = np.random.rand(n)
 x_reg = regularized_least_squares(A, b, L, lambda_reg)
 print("Regularized solution:", x_reg)
