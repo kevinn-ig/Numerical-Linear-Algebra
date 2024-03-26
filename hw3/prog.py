@@ -76,10 +76,8 @@ def analyze_reconstruction(n_values, lambda_values, noise_variance=1.0):
         plt.xlabel('Time')
         plt.ylabel('Signal')
         plt.legend()
-        print(os.getcwd())
-        filename = os.path.join(os.getcwd(), f"signalplot_{n}.png")
+        filename = os.path.join(os.path.dirname(__file__), f"signalplot_{n}.png")
         plt.savefig(filename)  # Save the plot with the specified filename
-        plt.show()
 
 def test_least_squares():
     # Initialize a variable to track the number of failed tests
