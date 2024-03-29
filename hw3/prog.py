@@ -227,20 +227,51 @@ def test_regularized_least_squares():
     else:
         print(f"{failed_tests} regularized_least_squares test case(s) failed")
 
+size = 10
+
+
+#1. n = k, i.e., a square nonsingular matrix A where xmin = A−1b.
+#2. n > k and Ax = b for b ∈ Rn and b ∈ R(A) i.e., a rectangular matrix A with full
+#column rank and a vector b that deﬁne a consistent set of overdetermined equations.
+#3. n > k and b ∈ Rn and b 6 ∈ R(A) i.e., a rectangular matrix A with full column rank and
+#a vector b = b1 + b2, b1 ∈ R(A), b2 6 ∈ R(A), b2 6 = 0, that deﬁne a linear least squares
+#problem with a nonzero residual rmin = b2 = b − Axmin
+#3
+
+test_least_squares()
+test_incremental_least_squares()
+
 # Example usage
-A = np.array([[1, 2], [3, 4], [5, 6]])
-b = np.array([7, 8, 9])
+print("\n SPD Matirx Results:")
+A = generate_spd_matrix(size)
+b = np.random.rand(size)
 x = least_squares(A, b)
 print("Solution:", x)
 
-test_least_squares()
 
-A = np.array([[1, 2], [3, 4]])
-b = np.array([7, 8])
+
 x = incremental_least_squares(A, b)
 print("Solution:", x)
 
-test_incremental_least_squares()
+
+print("\nRectangular Matirx Results:")
+fullrankstatus = False
+while(fullrankstatus == False):
+    A = np.random.rand(size, size-2)
+    rank = np.linalg.matrix_rank(A)
+    if rank == size - 2:
+        fullrankstatus = True
+x = np.random.rand(A.shape[1])
+b = A.dot(x)
+
+x = least_squares(A, b)
+print("Solution:", x)
+
+x = incremental_least_squares(A, b)
+print("Solution:", x)
+
+plot_relative_error_and_condition_number('least_squares', max_size=500)
+plot_relative_error_and_condition_number('incremental_least_squares', max_size=500)
 
 # Example usage
 n = 10

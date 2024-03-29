@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.22)  29 MAR 2024 13:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.22)  29 MAR 2024 13:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -393,86 +393,388 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:44: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.44         \centering
+                       
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:44: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.44         \centering
+                       
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
 <signalplot_100.png, id=56, 867.24pt x 578.16pt>
 File: signalplot_100.png Graphic file (type png)
 <use signalplot_100.png>
-Package pdftex.def Info: signalplot_100.png  used on input line 49.
-(pdftex.def)             Requested size: 216.80946pt x 144.54pt.
+Package pdftex.def Info: signalplot_100.png  used on input line 45.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
+
+Overfull \hbox (11.81937pt too wide) in paragraph at lines 46--46
+[]\OT1/cmr/m/n/9 (a)
+ []
+
+
+Overfull \hbox (15.41656pt too wide) in paragraph at lines 46--46
+|\OT1/cmr/m/n/9 Sig-
+ []
+
+
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 nal
+ []
+
+
+Overfull \hbox (10.81589pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 re-
+ []
+
+
+Overfull \hbox (16.95822pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 con-
+ []
+
+
+Overfull \hbox (23.19707pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 struc-
+ []
+
+
+Overfull \hbox (15.93045pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 tion
+ []
+
+
+Overfull \hbox (11.06937pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 for
+ []
+
+
+Overfull \hbox (15.34366pt too wide) in paragraph at lines 46--46
+\OML/cmm/m/it/9 n \OT1/cmr/m/n/9 =
+ []
+
+
+Overfull \hbox (16.44434pt too wide) in paragraph at lines 46--46
+\OT1/cmr/m/n/9 100$.| 
+ []
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:48: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.48     \end{subfigure}
+                        
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:48: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.48     \end{subfigure}
+                        
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:51: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.51         \centering
+                       
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:51: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.51         \centering
+                       
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
 <signalplot_200.png, id=58, 867.24pt x 578.16pt>
 File: signalplot_200.png Graphic file (type png)
 <use signalplot_200.png>
-Package pdftex.def Info: signalplot_200.png  used on input line 56.
-(pdftex.def)             Requested size: 216.80946pt x 144.54pt.
+Package pdftex.def Info: signalplot_200.png  used on input line 52.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
 
-Overfull \hbox (4.44443pt too wide) in paragraph at lines 47--60
- [][]  [] 
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 53--53
+[]\OT1/cmr/m/n/9 (b)
  []
+
+
+Overfull \hbox (15.41656pt too wide) in paragraph at lines 53--53
+|\OT1/cmr/m/n/9 Sig-
+ []
+
+
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 nal
+ []
+
+
+Overfull \hbox (10.81589pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 re-
+ []
+
+
+Overfull \hbox (16.95822pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 con-
+ []
+
+
+Overfull \hbox (23.19707pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 struc-
+ []
+
+
+Overfull \hbox (15.93045pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 tion
+ []
+
+
+Overfull \hbox (11.06937pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 for
+ []
+
+
+Overfull \hbox (15.34366pt too wide) in paragraph at lines 53--53
+\OML/cmm/m/it/9 n \OT1/cmr/m/n/9 =
+ []
+
+
+Overfull \hbox (16.44434pt too wide) in paragraph at lines 53--53
+\OT1/cmr/m/n/9 200$.| 
+ []
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:55: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.55     \end{subfigure}
+                        
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:55: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.55     \end{subfigure}
+                        
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:58: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.58         \centering
+                       
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:58: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.58         \centering
+                       
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
 
 <signalplot_300.png, id=59, 867.24pt x 578.16pt>
 File: signalplot_300.png Graphic file (type png)
 <use signalplot_300.png>
-Package pdftex.def Info: signalplot_300.png  used on input line 64.
-(pdftex.def)             Requested size: 216.80946pt x 144.54pt.
-<signalplot_400.png, id=60, 867.24pt x 578.16pt>
-File: signalplot_400.png Graphic file (type png)
-<use signalplot_400.png>
-Package pdftex.def Info: signalplot_400.png  used on input line 71.
-(pdftex.def)             Requested size: 216.80946pt x 144.54pt.
+Package pdftex.def Info: signalplot_300.png  used on input line 59.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
 
-Overfull \hbox (4.44443pt too wide) in paragraph at lines 62--75
- [][]  [] 
+Overfull \hbox (11.30548pt too wide) in paragraph at lines 60--60
+[]\OT1/cmr/m/n/9 (c)
  []
 
-<signalplot_500.png, id=61, 867.24pt x 578.16pt>
-File: signalplot_500.png Graphic file (type png)
-<use signalplot_500.png>
-Package pdftex.def Info: signalplot_500.png  used on input line 79.
-(pdftex.def)             Requested size: 216.80946pt x 144.54pt.
-<errorplot_incremental_least_squares.png, id=62, 867.24pt x 433.62pt>
-File: errorplot_incremental_least_squares.png Graphic file (type png)
-<use errorplot_incremental_least_squares.png>
-Package pdftex.def Info: errorplot_incremental_least_squares.png  used on input line 89.
-(pdftex.def)             Requested size: 203.83417pt x 101.91394pt.
-<errorplot_least_squares.png, id=63, 867.24pt x 433.62pt>
-File: errorplot_least_squares.png Graphic file (type png)
-<use errorplot_least_squares.png>
-Package pdftex.def Info: errorplot_least_squares.png  used on input line 96.
-(pdftex.def)             Requested size: 203.83417pt x 101.91394pt.
-[1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Text page 2 contains only floats.
-
-
-Overfull \vbox (4.8716pt too high) has occurred while \output is active []
-
- [2 <./signalplot_100.png> <./signalplot_200.png> <./signalplot_300.png> <./signalplot_400.png> <./signalplot_500.png> <./errorplot_incremental_least_squares.png> <./errorplot_least_squares.png>] (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 113.
-
-Overfull \hbox (69.03741pt too wide) in paragraph at lines 118--119
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (15.41656pt too wide) in paragraph at lines 60--60
+|\OT1/cmr/m/n/9 Sig-
  []
 
-[3] (./report.aux)
-Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 5C24FC2C52C227CF7DAA4C4D545E5E70;1653.
- ) 
-Here is how much of TeX's memory you used:
- 12867 strings out of 476025
- 204624 string characters out of 5790017
- 1865388 words of memory out of 5000000
- 33139 multiletter control sequences out of 15000+600000
- 521733 words of font info for 69 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,8n,77p,526b,1247s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on report.pdf (3 pages, 841011 bytes).
-PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 nal
+ []
+
+
+Overfull \hbox (10.81589pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 re-
+ []
+
+
+Overfull \hbox (16.95822pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 con-
+ []
+
+
+Overfull \hbox (23.19707pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 struc-
+ []
+
+
+Overfull \hbox (15.93045pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 tion
+ []
+
+
+Overfull \hbox (11.06937pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 for
+ []
+
+
+Overfull \hbox (15.34366pt too wide) in paragraph at lines 60--60
+\OML/cmm/m/it/9 n \OT1/cmr/m/n/9 =
+ []
+
+
+Overfull \hbox (16.44434pt too wide) in paragraph at lines 60--60
+\OT1/cmr/m/n/9 300$.| 
+ []
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:62: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.62     \end{subfigure}
+                        
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:62: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.62     \end{subfigure}
+                        
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:65: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.65         \centering
+                       
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:65: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.65         \centering
+                       
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+File: signalplot_300.png Graphic file (type png)
+<use signalplot_300.png>
+Package pdftex.def Info: signalplot_300.png  used on input line 66.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
+
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 67--67
+[]\OT1/cmr/m/n/9 (d)
+ []
+
+
+Overfull \hbox (15.41656pt too wide) in paragraph at lines 67--67
+|\OT1/cmr/m/n/9 Sig-
+ []
+
+
+Overfull \hbox (12.33325pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 nal
+ []
+
+
+Overfull \hbox (10.81589pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 re-
+ []
+
+
+Overfull \hbox (16.95822pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 con-
+ []
+
+
+Overfull \hbox (23.19707pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 struc-
+ []
+
+
+Overfull \hbox (15.93045pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 tion
+ []
+
+
+Overfull \hbox (11.06937pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 for
+ []
+
+
+Overfull \hbox (15.34366pt too wide) in paragraph at lines 67--67
+\OML/cmm/m/it/9 n \OT1/cmr/m/n/9 =
+ []
+
+
+Overfull \hbox (16.44434pt too wide) in paragraph at lines 67--67
+\OT1/cmr/m/n/9 400$.| 
+ []
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:69: Missing number, treated as zero.
+<to be read again> 
+                   \protect 
+l.69     \end{subfigure}
+                        
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+/Users/kevin_smith/Documents/GitHub/Numerical-Linear-Algebra/hw3/report.tex:69: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \protect 
+l.69     \end{subfigure}
+                        
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous uni
