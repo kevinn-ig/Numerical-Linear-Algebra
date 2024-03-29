@@ -4,11 +4,16 @@
 \usepackage{amsfonts}
 \usepackage{float}
 \usepackage{hyperref}
-\usepackage{color}
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{subcaption}
+\geometry{a4paper, margin=1in}
 
-\title{Program 3a}
+\definecolor{LinkColor}{rgb}{0, 0, 0.5}
+\hypersetup{colorlinks=true, linkcolor=LinkColor, citecolor=LinkColor, filecolor=LinkColor, urlcolor=LinkColor}
+
+\title{\textbf{Analytical Study of Least Squares Methods in Overdetermined Systems}}
 \author{Kevin Smith}
 \date{\today}
 
@@ -16,72 +21,29 @@
 
 \maketitle
 
+
 \section{Introduction}
-The linear least squares method is a cornerstone in numerical analysis for solving overdetermined systems. This study extends to the regularized variant, which is pivotal in scenarios with noisy data. By implementing Householder reflectors and an incremental updating algorithm, we aim to provide efficient and accurate solutions to these problems.
+Overdetermined systems are ubiquitous in fields such as engineering and data science, demanding robust and efficient solution methods. The least squares approaches, particularly their regularized variants, stand out as powerful tools for addressing these challenges. This work investigates their efficacy through computational experiments designed to shed light on the influence of regularization on solution stability and accuracy.
 
 \section{Problem Statement}
-We consider the problem $\min_{x \in \mathbb{R}^k} \|b - Ax\|^2$, given $b \in \mathbb{R}^n$ and a matrix $A \in \mathbb{R}^{n \times k}$ with linearly independent columns. Additionally, we address the regularized version to improve the robustness against noise in the observations.
+The fundamental problem addressed is the minimization of the residual $\|Ax - b\|^2$ for systems where $A \in \mathbb{R}^{n \times k}$ with $n > k$. Such systems commonly lack exact solutions, prompting the need for an approximate solution that can be effectively found via least squares methods. The addition of a regularization term helps to mitigate the effects of noise and errors in the data, ensuring a balanced solution.
 
 \section{Methodology}
 \subsection{Implementation Details}
-The algorithms are implemented in Python, utilizing numpy for matrix operations. The Householder-based approach transforms the problem into an upper triangular form, while the incremental algorithm updates the solution as new data arrives, suitable for real-time applications.
+We utilized NumPy within Python for our implementations, benefiting from its efficiency in matrix operations. Our methodology involved the application of Householder transformations for QR decomposition, enabling us to convert complex systems into a more manageable upper triangular form. We also explored an incremental updating algorithm suitable for dynamic data processing.
 
 \subsection{Test Design}
-The testing framework includes scenarios with known solutions, varying dimensions, and statistical behavior characterization. We ensure that the incremental code yields results consistent with the full-problem code.
+The testing protocol involved synthetic datasets with known solutions and covered a range of problem sizes. This allowed us to thoroughly assess the scalability of the algorithms and their robustness in both consistent and inconsistent system conditions.
 
-\section{Results}
+\section{Results and Discussion}
+
 \subsection{Accuracy and Statistical Behavior}
-Our tests confirm the accuracy of the implementations against known solutions. The incremental algorithm aligns with the full-problem algorithm, as shown by negligible discrepancies across a range of matrix sizes.
-
-\subsection{Regularized Linear Least Squares}
-The following figures illustrate signal reconstructions for various values of $n$ and regularization parameter $\lambda$. The reconstructions exhibit how an appropriate choice of $\lambda$ can significantly enhance the signal's fidelity, especially in the presence of noise.
+Comparative analysis of the traditional batch method and the incremental least squares method revealed a remarkable consistency in performance. The incremental least squares method, in particular, is designed to update the solution as new data points are added to the system, making it well-suited for real-time applications where data arrives sequentially. As visualized in the error plots presented in Figure \ref{fig:error_plots}, both methods exhibit stable performance with the error remaining within acceptable bounds across varying problem sizes. This stability is a testament to the robustness of the least squares approach in handling systems of different scales without significant loss of accuracy.
 
 \begin{figure*}[t!]
     \centering
-    \caption{Signal reconstructions and error analysis for different problem sizes.}
-    \label{fig:signal_reconstructions_and_error_analysis}
-    
-    % First row with two images
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=2.0in]{signalplot_100.png}
-        \caption{Signal reconstruction for $n=100$.}
-        \label{fig:signal100}
-    \end{subfigure}%
-    ~ % This adds a little space and allows the figures to be side by side
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=2.0in]{signalplot_200.png}
-        \caption{Signal reconstruction for $n=200$.}
-        \label{fig:signal200}
-    \end{subfigure}
-    
-    % Second row with two images
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=2.0in]{signalplot_300.png}
-        \caption{Signal reconstruction for $n=300$.}
-        \label{fig:signal300}
-    \end{subfigure}%
-    ~ % This adds a little space and allows the figures to be side by side
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=2.0in]{signalplot_400.png}
-        \caption{Signal reconstruction for $n=400$.}
-        \label{fig:signal400}
-    \end{subfigure}
-    
-    % Third row with one image centered
-    \begin{subfigure}[b]{0.5\textwidth}
-        \centering
-        \includegraphics[height=2.0in]{signalplot_500.png}
-        \caption{Signal reconstruction for $n=500$.}
-        \label{fig:signal500}
-    \end{subfigure}
-    
-    \bigskip % Adds extra space before the text for error plots
-    The relative error and the condition number plots from the experiments are as follows:
-    
+    \caption{Relative error and condition number analyses for the incremental and traditional least squares methods, highlighting the algorithms' performance across varying problem sizes.}
+    \label{fig:error_plots}
     \begin{subfigure}[b]{.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{errorplot_incremental_least_squares.png}
@@ -97,25 +59,42 @@ The following figures illustrate signal reconstructions for various values of $n
     \end{subfigure}
 \end{figure*}
 
-\section{Discussion}
-The results indicate the importance of choosing an appropriate $\lambda$ in regularized problems. The incremental approach, while efficient, requires careful consideration of numerical stability as the problem size grows. Comparatively, the traditional method remains robust across all tested sizes.
+The relative error plots provide insight into the accuracy of the least squares methods as the problem size increases. As observed in Figure \ref{fig:error_plots}, both the incremental and traditional methods exhibit stable performance with the error remaining within acceptable bounds. This indicates the robustness of the least squares approach in handling systems of varying sizes without significant loss of accuracy.
+
+
+
+\subsection{Impact of Regularization}
+The critical role of regularization is exemplified in the signal reconstruction plots provided in Figure \ref{fig:signal_reconstructions}, where the choice of $\lambda$ significantly influenced the trade-off between noise reduction and the preservation of signal integrity.
+
+\begin{figure*}[t!]
+    \centering
+    \caption{Signal reconstructions for different regularization parameters compared with the true signal, demonstrating the effect of varying $\lambda$ values on signal fidelity.}
+    \label{fig:signal_reconstructions}
+    % First row with two images
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=2.0in]{signalplot_100.png}
+        \caption{Signal reconstruction for $n=100$.}
+        \label{fig:signal100}
+    \end{subfigure}%
+    ~ % This adds a little space and allows the figures to be side by side
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=2.0in]{signalplot_500.png}
+        \caption{Signal reconstruction for $n=500$.}
+        \label{fig:signal500}
+    \end{subfigure}
+
+\end{figure*}
+
+
+The results underscore the nuanced balance required in selecting $\lambda$, with implications for real-time applications where the incremental method's efficiency is particularly advantageous.
 
 \section{Conclusion}
-The implemented linear and regularized linear least squares methods successfully address the minimization problems, with the regularization parameter being essential for noise mitigation. These methods exhibit potential for application in real-time signal processing and other areas requiring robust statistical analysis.
+The findings affirm the utility of least squares methods in treating overdetermined systems, with regularization serving as a key component for managing the interplay between error minimization and noise suppression. The insights gained point to promising directions for future research, including the development of adaptive regularization techniques and advanced incremental algorithms for high-dimensional problems.
 
-\section{References}
-Any papers, books, or articles referenced would be listed here.
+\section{Discussion}
+The choice of the regularization parameter $\lambda$ emerges as a critical factor in the effectiveness of the least squares solutions. While too small a $\lambda$ leaves the solution vulnerable to noise, an excessively large $\lambda$ may oversmooth the solution, erasing details in the data. The incremental method is especially promising for dynamic systems where the computational cost of re-solving the entire problem for every new data point is prohibitive.
 
-\section{Appendices}
-\subsection{Code Listings}
-\begin{lstlisting}[language=Python, caption=Linear Least Squares Implementation]
-# Insert your Python code for the linear least squares implementation here.
-\end{lstlisting}
-
-\begin{lstlisting}[language=Python, caption=Regularized Linear Least Squares Implementation]
-# Insert your Python code for the regularized linear least squares implementation here.
-\end{lstlisting}
-
-% Include additional code listings if necessary.
 
 \end{document}
