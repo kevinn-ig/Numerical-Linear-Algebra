@@ -2,6 +2,49 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+def generate_spd_matrix(n):
+    """Generate a symmetric positive definite matrix of size n x n."""
+    A = np.random.rand(n, n)
+    A = A + A.T  # Make the matrix symmetric
+    A += n * np.eye(n)  # Make the matrix positive definite
+    return A
+
+def plot_relative_error_and_condition_number(method, max_size, step=10):
+    """Plot the relative error and condition number for the specified method."""
+    sizes = range(step, max_size + 1, step)
+    errors = []
+
+    for size in sizes:
+        A = generate_spd_matrix(size)
+        b = np.random.rand(size)
+        if method == 'least_squares':
+            x_true = np.linalg.solve(A, b)
+            x_ls = least_squares(A, b)
+            relative_error = np.linalg.norm(x_ls - x_true) / np.linalg.norm(x_true)
+        elif method == 'incremental_least_squares':
+            x_prev = np.zeros(size)
+            x_true = np.linalg.solve(A, b)
+            for i in range(1, size + 1):
+                A_inc = A[:i, :i]
+                b_inc = b[:i]
+                x_prev = incremental_least_squares(A_inc, b_inc, x_prev)
+            relative_error = np.linalg.norm(x_prev - x_true) / np.linalg.norm(x_true)
+        else:
+            raise ValueError("Method must be 'least_squares' or 'incremental_least_squares'")
+
+        errors.append(relative_error)
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(sizes, errors, marker='o')
+    plt.title(f'Relative Error vs. Size (Method: {method})')
+    plt.xlabel('Size of A (n)')
+    plt.ylabel('Relative Error')
+
+    plt.tight_layout()
+    filename = os.path.join(os.path.dirname(__file__), f"errorplot_{method}.png")
+    plt.savefig(filename)  # Save the plot with the specified filename
+
+
 def householder_reflector(a):
     """Compute the Householder reflector for a vector a."""
     v = a.astype(float).copy()
@@ -215,3 +258,5 @@ n_values = [100, 200, 300, 400, 500]
 lambda_values = [1, 10, 100, 1000]
 analyze_reconstruction(n_values, lambda_values)
 
+plot_relative_error_and_condition_number('least_squares', max_size=500)
+plot_relative_error_and_condition_number('incremental_least_squares', max_size=500)
