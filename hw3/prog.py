@@ -9,41 +9,73 @@ def generate_spd_matrix(n):
     A += n * np.eye(n)  # Make the matrix positive definite
     return A
 
-def plot_relative_error_and_condition_number(method, max_size, step=50):
-    """Plot the relative error and condition number for the specified method."""
-    sizes = range(step, max_size + 1, step)
-    errors = []
-
-    for size in sizes:
-        A = generate_spd_matrix(size)
-        b = np.random.rand(size)
-        if method == 'least_squares':
-            x_true = np.linalg.solve(A, b)
-            x_ls = least_squares(A, b)
-            relative_error = np.linalg.norm(x_ls - x_true) / np.linalg.norm(x_true)
-        elif method == 'incremental_least_squares':
-            x_prev = np.zeros(size)
-            x_true = np.linalg.solve(A, b)
-            for i in range(1, size + 1):
-                A_inc = A[:i, :i]
-                b_inc = b[:i]
-                x_prev = incremental_least_squares(A_inc, b_inc, x_prev)
-            relative_error = np.linalg.norm(x_prev - x_true) / np.linalg.norm(x_true)
-        else:
-            raise ValueError("Method must be 'least_squares' or 'incremental_least_squares'")
-
-        errors.append(relative_error)
-
+def plot_relative_error(method, scenarios, max_size, step=50):
+    """Plot the relative error for the specified method and scenarios."""
     plt.figure(figsize=(12, 6))
-    plt.plot(sizes, errors, marker='o')
+
+    for scenario in scenarios:
+        sizes = range(step, max_size + 1, step)
+        errors = []
+
+
+        for size in sizes:
+            if scenario == "SPD":  # Square nonsingular matrix A
+                A = generate_spd_matrix(size)
+                x_true = np.random.rand(size)
+                b = A @ x_true
+            elif scenario == "Consistent System":  # Rectangular matrix A with full column rank, consistent system
+                fullrankstatus = False
+                while(fullrankstatus == False):
+                    A = np.random.rand(size, size-2)
+                    rank = np.linalg.matrix_rank(A)
+                    if rank == size - 2:
+                        fullrankstatus = True
+                x_true = np.random.rand(size - 2)
+                b = A.dot(x_true)
+            elif scenario == "Inconsistent System":  # Rectangular matrix A with full column rank, inconsistent system
+                fullrankstatus = False
+                while not fullrankstatus:
+                    A = np.random.rand(size, size - 2)
+                    rank = np.linalg.matrix_rank(A)
+                    if rank == size - 2:
+                        fullrankstatus = True
+                x_true = np.random.rand(size - 2)  # Least squares solution
+                b1 = A @ x_true
+                random_vec = np.random.rand(size)
+                Q, _ = np.linalg.qr(A)
+                projection = Q @ Q.T @ random_vec
+                b2 = random_vec - projection
+                if np.linalg.norm(b2) < 1e-6:
+                    b2 += 1
+                b = b1 + b2  # Inconsistent system
+
+            else:
+                raise ValueError("Invalid scenario number.")
+
+            if method == 'least_squares':
+                x_ls = least_squares(A, b)
+                relative_error = np.linalg.norm(x_ls - x_true) / np.linalg.norm(x_true)
+            elif method == 'incremental_least_squares':
+                x_prev = np.zeros(A.shape[1])
+                for i in range(1, size + 1):
+                    A_inc = A[:i, :i]
+                    b_inc = b[:i]
+                    x_prev = incremental_least_squares(A_inc, b_inc, x_prev)
+                relative_error = np.linalg.norm(x_prev - x_true) / np.linalg.norm(x_true)
+            else:
+                raise ValueError("Method must be 'least_squares' or 'incremental_least_squares'")
+
+            errors.append(relative_error)
+
+        plt.plot(sizes, errors, marker='o', label=f'{scenario}')
+
     plt.title(f'Relative Error vs. Size (Method: {method})')
     plt.xlabel('Size of A (n)')
     plt.ylabel('Relative Error')
-
+    plt.legend()
     plt.tight_layout()
     filename = os.path.join(os.path.dirname(__file__), f"errorplot_{method}.png")
     plt.savefig(filename)  # Save the plot with the specified filename
-
 
 def householder_reflector(a):
     """Compute the Householder reflector for a vector a."""
@@ -241,37 +273,9 @@ size = 10
 test_least_squares()
 test_incremental_least_squares()
 
-# Example usage
-print("\n SPD Matirx Results:")
-A = generate_spd_matrix(size)
-b = np.random.rand(size)
-x = least_squares(A, b)
-print("Solution:", x)
-
-
-
-x = incremental_least_squares(A, b)
-print("Solution:", x)
-
-
-print("\nRectangular Matirx Results:")
-fullrankstatus = False
-while(fullrankstatus == False):
-    A = np.random.rand(size, size-2)
-    rank = np.linalg.matrix_rank(A)
-    if rank == size - 2:
-        fullrankstatus = True
-x = np.random.rand(A.shape[1])
-b = A.dot(x)
-
-x = least_squares(A, b)
-print("Solution:", x)
-
-x = incremental_least_squares(A, b)
-print("Solution:", x)
-
-plot_relative_error_and_condition_number('least_squares', max_size=500)
-plot_relative_error_and_condition_number('incremental_least_squares', max_size=500)
+# Usage for scenarios 1, 2, and 3
+plot_relative_error('least_squares', ["SPD", "Consistent System", "Inconsistent System"], max_size=200)
+plot_relative_error('incremental_least_squares', ["SPD", "Consistent System", "Inconsistent System"], max_size=200)
 
 # Example usage
 n = 10
@@ -288,6 +292,3 @@ test_regularized_least_squares()
 n_values = [100, 200, 300, 400, 500]
 lambda_values = [1, 10, 100, 1000]
 analyze_reconstruction(n_values, lambda_values)
-
-plot_relative_error_and_condition_number('least_squares', max_size=500)
-plot_relative_error_and_condition_number('incremental_least_squares', max_size=500)
