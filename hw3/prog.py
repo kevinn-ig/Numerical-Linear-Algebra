@@ -9,7 +9,7 @@ def generate_spd_matrix(n):
     A += n * np.eye(n)  # Make the matrix positive definite
     return A
 
-def plot_relative_error_and_condition_number(method, max_size, step=10):
+def plot_relative_error_and_condition_number(method, max_size, step=50):
     """Plot the relative error and condition number for the specified method."""
     sizes = range(step, max_size + 1, step)
     errors = []
