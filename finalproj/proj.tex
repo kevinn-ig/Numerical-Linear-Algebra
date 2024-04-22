@@ -1,0 +1,140 @@
+\documentclass[pdf]
+{beamer}
+\mode<presentation>{}
+%% preamble
+\usetheme{Warsaw}
+
+%% preamble
+\title{CUR Decomposition and Its Applications}
+\subtitle{A Comprehensive Overview}
+\author{Kevin Smith}
+\date{\today}
+
+
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item \textbf{Brief overview of matrix factorizations:}
+            \begin{itemize}
+                \item Matrix factorizations are fundamental techniques in linear algebra used to decompose matrices into products of simpler matrices.
+                \item Common types include LU, QR, and Singular Value Decomposition (SVD), each serving different purposes in numerical analysis, optimization, and data science.
+            \end{itemize}
+        \item \textbf{Introduction to CUR decomposition:}
+            \begin{itemize}
+                \item Unlike traditional factorizations, CUR decomposition selects actual columns and rows from the original matrix to form matrices C and R, with a middle matrix U to link them.
+                \item This method is particularly valuable for large sparse datasets where interpretability of the factors is crucial.
+            \end{itemize}
+        \item \textbf{Importance and advantages in data analysis:}
+            \begin{itemize}
+                \item CUR decomposition provides a more interpretable and often more efficient alternative to SVD for approximating matrices.
+                \item It's especially useful in areas like image processing, recommender systems, and bioinformatics, where understanding the significance of the data's features and observations directly matters.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Moore-Penrose Pseudoinverse}
+    \begin{definition}
+        The Moore-Penrose pseudoinverse of a matrix \( A \) is defined as the matrix \( A^+ \) that satisfies the following conditions:
+        \begin{enumerate}
+            \item \( AA^+A = A \) \quad (Reproduction of \( A \))
+            \item \( A^+AA^+ = A^+ \) \quad (Reproduction of \( A^+ \))
+            \item \( (AA^+)^T = AA^+ \) \quad (Hermitian property of \( AA^+ \))
+            \item \( (A^+A)^T = A^+A \) \quad (Hermitian property of \( A^+A \))
+        \end{enumerate}
+    \end{definition}
+\end{frame}
+
+
+\begin{frame}{CUR Background}
+    \begin{itemize}
+        \item \textbf{What is CUR Decomposition?}
+            \begin{itemize}
+                \item CUR decomposition approximates a matrix \(A\) using selected columns \(C\) and rows \(R\) from \(A\), combined through a middle matrix \(U\) to approximate \(A\) as \(CUR\).
+            \end{itemize}
+        \item \textbf{Mathematical formulation:}
+            \begin{itemize}
+                \item Given \(A \in \mathbb{R}^{m \times n}\), select subsets of columns and rows to form \(C\) and \(R\).
+                \item Compute \(U\) as \(U = C^+ A R^+\), where \(C^+\) and \(R^+\) are Moore-Penrose pseudoinverses, minimizing the error \( \| A - CUR \|_F \).
+            \end{itemize}
+        \item \textbf{Comparison with SVD:}
+            \begin{itemize}
+                \item SVD decomposes \(A\) into \(A = U \Sigma V^T\) with optimal low-rank approximation but uses abstract, non-intuitive singular vectors and values.
+                \item In data analysis, interpretability is key; CUR's use of actual data columns and rows enhances understandability and relevance in applied settings, making it superior for tasks requiring clear, actionable insights.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Algorithm}
+    \begin{itemize}
+        \item How CUR Decomposition Works
+        \item Selection criteria for columns (C) and rows (R)
+        \item Practical implementation steps
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Advantages of CUR}
+    \begin{itemize}
+        \item Interpretability of the components
+        \item Computational benefits
+        \item Application contexts where CUR excels
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Application in Data Analysis}
+    \begin{itemize}
+        \item Overview of different applications
+        \item Highlight on key use cases
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Image Compression}
+    \begin{itemize}
+        \item Using CUR for image compression
+        \item Example with results
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recommender Systems}
+    \begin{itemize}
+        \item Application in collaborative filtering
+        \item Benefits over other matrix factorizations
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Gene Expression}
+    \begin{itemize}
+        \item CUR in bioinformatics
+        \item Case study: Identifying significant genes
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Dimensionality Reduction}
+    \begin{itemize}
+        \item CUR vs PCA in feature selection
+        \item Advantages in interpretability and selection
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Potential Drawbacks}
+    \begin{itemize}
+        \item Limitations of CUR decomposition
+        \item Conditions for optimal performance
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Q\&A}
+    \begin{itemize}
+        \item Invitation for audience to ask questions or discuss further
+    \end{itemize}
+\end{frame}
+
+\end{document}
