@@ -1,0 +1,22 @@
+\frametitle{CUR Decomposition: Python Pseudocode}
+\begin{verbatim}
+import numpy as np
+
+# Step 1: Compute SVD
+U, S, Vt = np.linalg.svd(A, full_matrices=False)
+V = Vt.T
+
+# Step 2: Calculate leverage scores
+leverage_scores = np.sum(V**2, axis=0)
+
+# Step 3: Normalize and select columns
+probabilities = leverage_scores / np.sum(leverage_scores)
+columns_selected = np.random.choice(range(A.shape[1]),
+                                    size=k, replace=False, p=probabilities)
+
+# Step 4: CUR Decomposition
+C = A[:, columns_selected]
+R = A[rows_selected, :]
+U = np.linalg.pinv(C) @ A @ np.linalg.pinv(R)
+\end{verbatim}
+\caption{Python pseudocode for CUR decomposition.}
