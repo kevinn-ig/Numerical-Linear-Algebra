@@ -10,7 +10,6 @@
 \title{CUR Decomposition and Its Applications}
 \subtitle{A Comprehensive Overview}
 \author{Kevin Smith}
-\institute{Department of Mathematics \\ Your University Name}
 \date{\today}
 
 \usepackage{amsmath} % Enhanced mathematics
@@ -235,15 +234,23 @@
 \end{frame}
 
 
-\begin{frame}{Comparison of Decomposition Techniques}
-    \begin{itemize}
-        \item \textbf{SVD vs. CUR:}
+\begin{frame}{Computational Cost Comparison}
             \begin{itemize}
-                \item While SVD is optimal for energy conservation and noise reduction, CUR provides a more pragmatic approach in applications requiring direct interpretation of the original matrix features.
-                \item Analysis of scenarios where CUR outperforms SVD in terms of computational time and interpretability.
+                \item \textbf{CUR Decomposition:} 
+                    \begin{itemize}
+                        \item CUR decomposition involves selecting a subset of columns and rows from the original matrix, which can be computed efficiently using randomized algorithms such as leverage score sampling.
+                        \item The computational cost of CUR is often \(O(n \cdot r)\), where \(n\) is the number of rows, and \(r\) is the desired rank, making it suitable for real-time processing and big data applications.
+                    \end{itemize}
+                \item \textbf{Comparison with Other Techniques:}
+                    \begin{itemize}
+                        \item \textbf{SVD (Singular Value Decomposition):} SVD typically has a computational complexity of \(O(n^2 \cdot m)\) for an \(n \times m\) matrix, making it computationally expensive, especially for large matrices.
+                        \item \textbf{PCA (Principal Component Analysis):} PCA's computational complexity is \(O(n^3)\) for computing eigenvalues and eigenvectors of the covariance matrix, which can be high for high-dimensional data.
+                    \end{itemize}
             \end{itemize}
-    \end{itemize}
 \end{frame}
+
+
+
 
 \begin{frame}{CUR vs. PCA: A Comparative Analysis}
     \begin{itemize}
