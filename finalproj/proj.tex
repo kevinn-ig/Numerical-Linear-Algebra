@@ -34,10 +34,6 @@
                 \item CUR selectively uses actual columns and rows from the matrix to form low-rank approximations.
                 \item Emphasizes interpretability and efficiency in large, sparse datasets.
             \end{itemize}
-        \item \textbf{Agenda:}
-            \begin{itemize}
-                \item Theoretical Background, Practical Applications, Algorithmic Details, Error Analysis, and Future Research Directions.
-            \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -67,8 +63,14 @@
                 \item Guide the selection of columns/rows that best capture the underlying structure of \( A \).
                 \item High leverage scores correlate with high influence on the matrix's spectral properties.
             \end{itemize}
+        \item \textbf{Statistical Interpretation:}
+            \begin{itemize}
+                \item Leverage scores can be normalized to sum to one, forming a probability distribution over the columns or rows.
+                \item This probabilistic interpretation is crucial for sampling methods in CUR decomposition, emphasizing columns or rows that have a disproportionately large impact on the data structure.
+            \end{itemize}
     \end{itemize}
 \end{frame}
+ 
 
 \begin{frame}{Derivation of Leverage Scores}
     \begin{itemize}

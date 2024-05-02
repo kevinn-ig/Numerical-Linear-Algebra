@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1714579406.09539 "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" "proj.pdf" "proj" 1714579409.64612 0
-  "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" 1714579404 16754 19c024da7ce5d2e411ad2eaf059e827b ""
+["pdflatex"] 1714605382.07128 "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" "proj.pdf" "proj" 1714605384.29151 0
+  "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" 1714605381 16976 f53114a86fab688c73f487f67cfdc105 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1711740695 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1711741478 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcss1000.tfm" 1711741139 1536 293044035fd171bb1d18cf655049b101 ""
@@ -216,10 +216,10 @@
   "c:/texlive/2024/texmf.cnf" 1711744721 713 614551405fc44b98efbf516466e3c909 ""
   "imcomp.png" 1714508950 925995 48b6f6324fc3fc41820d6597c7936e7c ""
   "imcomptime.png" 1714508950 26865 11baf65a18ac3f880f81d54506df12e9 ""
-  "proj.aux" 1714579409 3113 c19e64263c26c4c806abb9866eace662 "pdflatex"
-  "proj.nav" 1714579409 1946 cc1d57bc897673374b837eab8153475a "pdflatex"
-  "proj.out" 1714579408 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "proj.tex" 1714579404 16754 19c024da7ce5d2e411ad2eaf059e827b ""
+  "proj.aux" 1714605384 3113 c19e64263c26c4c806abb9866eace662 "pdflatex"
+  "proj.nav" 1714605384 1946 cc1d57bc897673374b837eab8153475a "pdflatex"
+  "proj.out" 1714605383 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "proj.tex" 1714605381 16976 f53114a86fab688c73f487f67cfdc105 ""
   (generated)
   "proj.aux"
   "proj.log"
