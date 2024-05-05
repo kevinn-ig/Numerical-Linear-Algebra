@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1714605382.07128 "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" "proj.pdf" "proj" 1714605384.29151 0
-  "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" 1714605381 16976 f53114a86fab688c73f487f67cfdc105 ""
+["pdflatex"] 1714669544.01741 "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" "proj.pdf" "proj" 1714669546.43157 0
+  "c:/codestuffs/Numerical-Linear-Algebra/finalproj/proj.tex" 1714669320 17641 941119bbfd8fd30e7a84e20f9d085dab ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1711740695 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1711741478 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcss1000.tfm" 1711741139 1536 293044035fd171bb1d18cf655049b101 ""
@@ -25,6 +25,7 @@
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm" 1711740689 1296 d77f431d10d47c8ea2cc18cf45346274 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss9.tfm" 1711740689 1320 49357c421c0d469f88b867dd0c3d10e8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1711740689 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm" 1711740689 1520 ca2bb4b78ac9800bd686e30c6d19ef95 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1711740689 1124 6c73e740cf17375f03eec0ee63599741 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1711740689 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1711740689 1120 8b7d695260f3cff42e636090a8002094 ""
@@ -214,12 +215,12 @@
   "c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1711744742 5519690 1698f96789543a09b6b0e33aada59581 ""
   "c:/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1711744887 8222552 97c7573d8a02f1e12f681be14afeda3b ""
   "c:/texlive/2024/texmf.cnf" 1711744721 713 614551405fc44b98efbf516466e3c909 ""
-  "imcomp.png" 1714508950 925995 48b6f6324fc3fc41820d6597c7936e7c ""
-  "imcomptime.png" 1714508950 26865 11baf65a18ac3f880f81d54506df12e9 ""
-  "proj.aux" 1714605384 3113 c19e64263c26c4c806abb9866eace662 "pdflatex"
-  "proj.nav" 1714605384 1946 cc1d57bc897673374b837eab8153475a "pdflatex"
-  "proj.out" 1714605383 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "proj.tex" 1714605381 16976 f53114a86fab688c73f487f67cfdc105 ""
+  "imcomp.png" 1714669515 922522 630d72ab5a2b41d00eb4c477c47257f5 ""
+  "imcomptime.png" 1714669515 30838 67c256832026801dd1c4412517675941 ""
+  "proj.aux" 1714669546 3406 3e09cb0fddf138e334e8d3bc089733b1 "pdflatex"
+  "proj.nav" 1714669546 2039 5a4196ea47006e239fc20568aaec1af6 "pdflatex"
+  "proj.out" 1714669545 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "proj.tex" 1714669320 17641 941119bbfd8fd30e7a84e20f9d085dab ""
   (generated)
   "proj.aux"
   "proj.log"

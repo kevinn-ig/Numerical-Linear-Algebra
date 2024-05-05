@@ -6,6 +6,7 @@ from scipy.linalg import svd, pinv, diagsvd
 from time import time
 from skimage.metrics import peak_signal_noise_ratio as psnr
 from skimage.metrics import structural_similarity as ssim
+import scipy.linalg as la
 
 # Load the image and convert to grayscale
 image = rgb2gray(data.astronaut())
@@ -22,17 +23,32 @@ ssim_cur = []
 psnr_svd = []
 ssim_svd = []
 
-# Function to apply CUR decomposition
-def cur_decomposition(matrix, k):
+
+def cur_decomposition(A, k):
+    # Compute SVD of A
     start_time = time()
-    col_indices = np.random.choice(matrix.shape[1], k, replace=False)
-    row_indices = np.random.choice(matrix.shape[0], k, replace=False)
-    C = matrix[:, col_indices]
-    R = matrix[row_indices, :]
-    U = pinv(C) @ matrix @ pinv(R)
+    U, s, Vt = la.svd(A, full_matrices=False)  # Convert sparse matrix to dense for SVD
+    V = Vt.T
+
+    # Compute raw leverage scores
+    raw_leverage_scores = np.sum(V**2, axis=1)
+
+    # Normalize the scores to form a probability distribution
+    leverage_scores = raw_leverage_scores / np.sum(raw_leverage_scores)
+    
+    # Select k columns based on the leverage scores probabilistically
+    selected_columns = np.random.choice(np.arange(A.shape[1]), size=k, replace=False, p=leverage_scores)
+    
+    C = A[:, selected_columns]
+    R = A[selected_columns, :]
+    C_pinv = la.pinv(C)
+    R_pinv = la.pinv(R)
+    U = C_pinv @ A @ R_pinv
     cur_image = C @ U @ R
     elapsed_time = time() - start_time
-    return cur_image, elapsed_time
+    
+    return cur_image, elapsed_time 
+
 
 # Function to apply SVD decomposition and reconstruct with top k singular values
 def svd_reconstruction(matrix, k):

@@ -216,7 +216,7 @@
             \item Interpretability and Insight: Enhances the ability to identify specific genes contributing to observed patterns, improving biological relevance.
         \end{itemize}
     \end{itemize}
-    \footnote{M. W. Mahoney and P. Drineas, "CUR Matrix Decompositions for Improved Data Analysis," 2009.}
+    \footnote{\cite{MahoneyDrineas2009}}
 \end{frame}
 
 \begin{frame}{Real-world Example: Genomic Data Analysis}
@@ -232,8 +232,9 @@
             \item Practical Applications: Vital for areas like drug discovery, where specific gene responses to treatments are studied.
         \end{itemize}
     \end{itemize}
-    \footnote{M. W. Mahoney and P. Drineas, "CUR Matrix Decompositions for Improved Data Analysis," 2009.}
+    \footnote{\cite{MahoneyDrineas2009}}
 \end{frame}
+
 
 
 \begin{frame}{Computational Cost Comparison}
@@ -241,7 +242,7 @@
                 \item \textbf{CUR Decomposition:} 
                     \begin{itemize}
                         \item CUR decomposition involves selecting a subset of columns and rows from the original matrix, which can be computed efficiently using randomized algorithms such as leverage score sampling.
-                        \item The computational cost of CUR is often \(O(n \cdot r)\), where \(n\) is the number of rows, and \(r\) is the desired rank, making it suitable for real-time processing and big data applications.
+                        \item The computational cost of CUR is often \(O(SVD(A,k)) = O(mnk)\) \cite{MahoneyDrineas2009}, where \(n\) is the number of rows, \(m\) is the number of columns and \(k\) is the desired rank, making it suitable for real-time processing and big data applications.
                     \end{itemize}
                 \item \textbf{Comparison with Other Techniques:}
                     \begin{itemize}
@@ -308,6 +309,20 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Bibliography}
+    \frametitle{References}
+    \begin{thebibliography}{10} % '10' here indicates the maximum number of entries to be added; increase if more citations are present
+        \setbeamertemplate{bibliography item}[text]
+        
+        \bibitem{MahoneyDrineas2009}
+        M. W. Mahoney and P. Drineas,
+        \newblock {\em CUR Matrix Decompositions for Improved Data Analysis},
+        \newblock 2009.
+        \newblock This reference discusses the computational considerations and real-world applications of CUR matrix decomposition, particularly in genomic data analysis.
+        
+        % Add more \bibitem entries for each additional reference.
+    \end{thebibliography}
+\end{frame}
 
 
 \end{document}
